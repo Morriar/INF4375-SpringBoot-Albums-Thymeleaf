@@ -23,12 +23,19 @@ public class Album {
     private Integer year;
     private Double price;
 
+    public Album() {
+    }
+
     public Album(String id, String title, String artist, Integer year, Double pruce) {
         this.id = id;
         this.title = title;
         this.artist = artist;
         this.year = year;
         this.price = pruce;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {
@@ -65,6 +72,11 @@ public class Album {
 
     public void setPrice(Double pruce) {
         this.price = pruce;
+    }
+
+    @Override
+    public String toString() {
+        return artist + " - " + title;
     }
 
 }

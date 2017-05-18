@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,11 +22,11 @@ public class AlbumsController {
     private List<Album> albums = new ArrayList<Album>();
 
     public AlbumsController() {
-        albums.add(new Album("x01", "Album1", "Artist1", 1998, 10.0));
-        albums.add(new Album("x02", "Album2", "Artist2", 1990, 11.9));
-        albums.add(new Album("x03", "Album3", "Artist3", 2005, 7.5));
-        albums.add(new Album("x04", "Album4", "Artist4", 2001, 18.0));
-        albums.add(new Album("x05", "Album5", "Artist5", 1999, 10.5));
+        albums.add(new Album("x1", "Album1", "Artist1", 1998, 10.0));
+        albums.add(new Album("x2", "Album2", "Artist2", 1990, 11.9));
+        albums.add(new Album("x3", "Album3", "Artist3", 2005, 7.5));
+        albums.add(new Album("x4", "Album4", "Artist4", 2001, 18.0));
+        albums.add(new Album("x5", "Album5", "Artist5", 1999, 10.5));
     }
 
     public Album getById(String id) {
@@ -47,6 +49,19 @@ public class AlbumsController {
         Album album = getById(id);
         model.put("album", album);
         return "album";
+    }
+
+    @RequestMapping("/form")
+    public String form(Map<String, Object> model) {
+        return "form";
+    }
+
+    @RequestMapping("/new")
+    public String form(Album body, Map<String, Object> model) {
+        String id = "x" + albums.size();
+        body.setId(id);
+        albums.add(body);
+        return "redirect:/albums";
     }
 
 }
