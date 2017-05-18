@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thymeleaf Example</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+
+    </head>
+    <body>
+        <h1>Album details</h1>
+        <dl>
+            <dt>Title</dt>
+            <dd th:text="${album.getTitle()}" />
+            <dt>Artist</dt>
+            <dd th:text="${album.getArtist()}" />
+            <dt>Year</dt>
+            <dd th:text="${album.getYear()}" />
+            <dt>Price</dt>
+            <dd th:text="${album.getPrice()}" />
+        </dl>
+    </body>
+</html>

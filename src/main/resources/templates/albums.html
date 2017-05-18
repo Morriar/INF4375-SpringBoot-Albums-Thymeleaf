@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Albums</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+
+    </head>
+    <body>
+        <h1>Albums list</h1>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="album: ${albums}">
+                <td>
+                    <a th:href="'/albums/' + ${album.getId()}" th:text="${album.getTitle()}" />
+                </td>
+                <td th:text="${album.getArtist()}" />
+                <td th:text="${album.getYear()}" />
+                <td th:text="${album.getPrice()}" />
+            </tr>
+        </table>
+    </body>
+</html>
